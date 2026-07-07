@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Time Duration Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="box">
+        <h2>Time Duration Calculator</h2>
+
+        <form method="POST" action="process.php">
+            <label>Input Date & Time (format: YYYY-MM-DD HH:MM:SS)</label>
+            <input type="text" name="datetime" placeholder="2026-03-13 21:07:57" required>
+
+            <label>Duration</label>
+            <div class="row">
+                <input type="number" name="duration" placeholder="Enter value" required>
+                <select name="unit">
+                    <option value="hours">Hours</option>
+                    <option value="minutes">Minutes</option>
+                    <option value="seconds">Seconds</option>
+                    <option value="days">Days</option>
+                </select>
+            </div>
+
+            <button type="submit">Calculate</button>
+        </form>
+
+        <?php if (isset($_GET['result'])) { ?>
+            <div class="result">
+                Result:
+                <span id="resultText"><?php echo htmlspecialchars($_GET['result']); ?></span>
+
+                <br><br>
+                <button onclick="copyResult()">Copy</button>
+                <div id="copyStatus"></div>
+            </div>
+        <?php } ?>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
